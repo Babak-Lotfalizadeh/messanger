@@ -1,0 +1,18 @@
+{
+  "appName": "Messenger",
+  "setting": "Setting",
+  "language": "Language",
+  "currentLanguage": "English",
+  "theme": "Theme",
+  "primaryColor": "Primary color",
+  "secondaryColor": "Secondary color",
+  "darkMode": "Dark mode",
+  "general": "General",
+  "english": "English",
+  "persian": "پارسی",
+  "save": "Save",
+  "primaryTextColor": "Primary text color",
+  "inDarkMode": "in dark mode",
+  "inLightMode": "in light mode",
+  "material3": "Material 3"
+}

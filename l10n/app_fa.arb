@@ -1,0 +1,16 @@
+{
+  "appName": "مسنجر",
+  "setting": "تنظیمات",
+  "language": "زبان",
+  "currentLanguage": "پارسی",
+  "theme": "رنگ بندی",
+  "primaryColor": "رنگ اصلی",
+  "secondaryColor": "رنگ دوم",
+  "darkMode": "حالت تاریک",
+  "general": "عمومی",
+  "english": "English",
+  "persian": "پارسی",
+  "save": "ذخیره",
+  "primaryTextColor": "رنگ اصلی نوشتار",
+  "material3": "متریال 3"
+}
