@@ -14,5 +14,19 @@
   "primaryTextColor": "Primary text color",
   "inDarkMode": "in dark mode",
   "inLightMode": "in light mode",
-  "material3": "Material 3"
+  "material3": "Material 3",
+  "register": "Register",
+  "userName": "User name",
+  "password": "Password",
+  "passwordConfirm": "Password confirm",
+  "fieldCanNotBeEmpty": "Field can not be empty",
+  "unknownError": "Unknown error",
+  "lengthError": "length can not be under",
+  "characters": "characters",
+  "regexErrorEmail": "not a valid email address",
+  "regexErrorPassword": "Must be contained at least 8 characters,at least one uppercase letter, one lowercase letter, one number and one special character",
+  "passwordAndPasswordConfirmValueIsNotMatch": "value of password field and password confirm field are not match.",
+  "hereIsYourFirstStepWithUs": "Here's your first step with us",
+  "weakPassword": "The password provided is too weak.",
+  "emailAlreadyInUse": "The account already exists for that email."
 }

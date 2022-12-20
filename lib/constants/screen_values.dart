@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ScreenValues {
+  const ScreenValues._();
+  static const String fontFamilyRighteous = "Righteous";
   static const double iconSmall = 20;
   static const double iconNormal = 24;
   static const double paddingNormal = 8;
@@ -10,8 +12,16 @@ class ScreenValues {
   static const double radiusSmall = radiusNormal * 0.1;
   static const double radiusNormal = 8;
   static const double radiusLarge = radiusNormal * 2;
+  static const double radiusXLarge = radiusNormal * 4;
+  static const Color teddyBackground = Color(0xffD6E2EA);
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < mobileConstraints.maxWidth;
   static const mobileConstraints = BoxConstraints(
     maxWidth: 800,
     maxHeight: 800,
+  );
+  static const webConstraints = BoxConstraints(
+    maxWidth: 1000,
+    maxHeight: 1000,
   );
 }

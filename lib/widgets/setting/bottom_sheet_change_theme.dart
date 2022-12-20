@@ -36,7 +36,6 @@ class _BottomSheetChangeThemeState extends State<BottomSheetChangeTheme> {
             onColorChanged: onColorChanged,
           ),
           ButtonWidget(
-            minWidth: double.infinity,
             onPressed: () => widget.onSave(pickerColor),
             title: strings?.save ?? "",
           ),

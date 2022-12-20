@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:messenger/enums/shared_preference_enum.dart';
 import 'package:messenger/services/shared_preference_service.dart';
 
@@ -31,6 +32,7 @@ class ThemeProvider extends ChangeNotifier {
         primaryColor: _primaryColorLight,
         textTheme: _lightThemeData.textTheme.apply(
           bodyColor: _primaryTextColorLight,
+          fontFamily: GoogleFonts.aBeeZee().fontFamily,
         ),
         colorScheme: _lightThemeData.colorScheme.copyWith(
           primary: _primaryColorLight,
@@ -42,6 +44,7 @@ class ThemeProvider extends ChangeNotifier {
         primaryColor: _primaryColorDark,
         textTheme: _darkThemeData.textTheme.apply(
           bodyColor: _primaryTextColorDark,
+          fontFamily: GoogleFonts.aBeeZee().fontFamily,
         ),
         colorScheme: _darkThemeData.colorScheme.copyWith(
           primary: _primaryColorDark,

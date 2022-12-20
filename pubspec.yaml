@@ -10,11 +10,20 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  rive: ^0.9.1
   intl: ^0.17.0
   provider: ^6.0.4
+  go_router: ^5.2.4
+  flutter_svg: ^1.1.6
+  google_fonts: ^3.0.1
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.1
   cupertino_icons: ^1.0.2
+  animated_text_kit: ^4.2.2
+  firebase_analytics: ^10.0.7
   shared_preferences: ^2.0.15
   flutter_colorpicker: ^1.0.3
+  firebase_crashlytics: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -23,3 +32,9 @@ dev_dependencies:
 flutter:
   generate: true
   uses-material-design: true
+  fonts:
+    - family: Righteous
+      fonts:
+        - asset: assets/fonts/Righteous-Regular.ttf
+  assets:
+    - assets/rive/

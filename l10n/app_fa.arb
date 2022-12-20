@@ -12,5 +12,19 @@
   "persian": "پارسی",
   "save": "ذخیره",
   "primaryTextColor": "رنگ اصلی نوشتار",
-  "material3": "متریال 3"
+  "material3": "متریال 3",
+  "register": "ثبت نام",
+  "userName": "نام کاربری",
+  "password":"گذرواژه",
+  "passwordConfirm": "تکرار گذرواژه",
+  "fieldCanNotBeEmpty": "فیلد نمیتواند خالی بماند",
+  "unknownError": "مشکل نامشخص",
+  "lengthError": "رشته مورد قبول: حداقل",
+  "characters": "کاراکتر",
+  "regexErrorEmail": "ایمیل وارد شده معتبر نمیباشد",
+  "regexErrorPassword": "حد اقل هشت کاراکتر، یک حرف بزرگ، یک حرف کوچک و یک کارکتر خاص",
+  "passwordAndPasswordConfirmValueIsNotMatch": "گذرواژه و تکرار ان با یکدیگر برار نیستند.",
+  "hereIsYourFirstStepWithUs": "اولین قدم شما برای با هم بودن",
+  "weakPassword": "گذرواژه وارد شده ضعیف می باشد.",
+  "emailAlreadyInUse": "ایمیل وارد شده قبلا استفاده شده است."
 }
