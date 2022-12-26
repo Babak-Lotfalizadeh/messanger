@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/providers/language_provider.dart';
 import 'package:messenger/providers/theme_provider.dart';
-import 'package:messenger/screens/splash_screen.dart';
+import 'package:messenger/screens/splash_page.dart';
 import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/services/snack_bar_service.dart';
 import 'package:messenger/utilities/imports.dart';
@@ -23,7 +23,7 @@ class MessengerApp extends StatelessWidget {
       themeMode: context.watch<ThemeProvider>().themeMode,
       navigatorKey: NavigationService.navigatorKey,
       scaffoldMessengerKey: SnackBarService.scaffoldMessengerKey,
-      home: const SplashScreen(),
+      home: const SplashPage(),
     );
   }
 }

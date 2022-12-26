@@ -4,23 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
 import 'package:messenger/providers/teddy_provider.dart';
 
-class RegisterProvider extends ChangeNotifier {
+class ForgotPasswordProvider extends ChangeNotifier {
   final formKey = GlobalKey<FormState>();
   late TeddyProvider _teddyProvider;
 
-  final FocusNode userNameFocusNode = FocusNode();
-  final FocusNode passwordFocusNode = FocusNode();
-  final FocusNode confirmFocusNode = FocusNode();
   final TextEditingController userNameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmController = TextEditingController();
+  final FocusNode userNameFocusNode = FocusNode();
+
+  bool? get validate => formKey.currentState?.validate();
 
   void init(TeddyProvider teddyProvider) {
     _teddyProvider = teddyProvider;
     userNameController.addListener(_userNameController);
     userNameFocusNode.addListener(_userNameFocusNode);
-    passwordFocusNode.addListener(_passwordFocusNode);
-    confirmFocusNode.addListener(_confirmFocusNode);
   }
 
   void _userNameController() {
@@ -31,51 +27,31 @@ class RegisterProvider extends ChangeNotifier {
     _teddyProvider.setCheck(userNameFocusNode.hasFocus);
   }
 
-  void _passwordFocusNode() {
-    _teddyProvider.setHandsUp(passwordFocusNode.hasFocus);
-  }
-
-  void _confirmFocusNode() {
-    _teddyProvider.setHandsUp(confirmFocusNode.hasFocus);
-  }
-
-  void setHandUp(bool value) {
-    _teddyProvider.setHandsUp(true);
-  }
-
   @override
   void dispose() {
     userNameController.removeListener(_userNameController);
     userNameFocusNode.removeListener(_userNameFocusNode);
-    passwordFocusNode.removeListener(_passwordFocusNode);
-    confirmFocusNode.removeListener(_confirmFocusNode);
     super.dispose();
   }
 
   void removeAllFocuses() {
     userNameFocusNode.unfocus();
-    passwordFocusNode.unfocus();
-    confirmFocusNode.unfocus();
   }
 
-  void validationFailed() {
-    _teddyProvider.setFail();
-  }
-
-  Future<void> register({
-    void Function()? whenSuccess,
+  Future<void> forgotPassword({
+    void Function(dynamic response)? whenSuccess,
     void Function(String)? whenError,
   }) async {
     removeAllFocuses();
-    (await FirebaseAuthenticationService().createUserWithEmailAndPassword(
+
+    var response = await FirebaseAuthenticationService().forgotPassword(
       emailAddress: userNameController.text,
-      password: passwordController.text,
-    ))
-        .fold(
+    );
+    response.fold(
       whenSuccess: (newValue) {
         _teddyProvider.setSuccess().then(
           (value) {
-            whenSuccess?.call();
+            whenSuccess?.call(true);
           },
         );
       },

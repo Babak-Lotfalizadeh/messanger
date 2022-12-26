@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
+import 'package:messenger/screens/authentication_page.dart';
 import 'package:messenger/screens/home_page.dart';
-import 'package:messenger/screens/login_screen.dart';
 import 'package:messenger/services/navigation_service.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -22,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _handleUser() {
     var currentUser = FirebaseAuthenticationService().currentUser;
-    Widget destination = const LoginScreen();
+    Widget destination = const AuthenticationPage();
     if (currentUser != null) {
       destination = const HomePage();
     }
@@ -33,7 +34,11 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: CircularProgressIndicator(),
+        child: SizedBox(
+          height: ScreenValues.iconNormal,
+          width: ScreenValues.iconNormal,
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

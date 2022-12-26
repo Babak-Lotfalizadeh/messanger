@@ -26,5 +26,16 @@
   "passwordAndPasswordConfirmValueIsNotMatch": "گذرواژه و تکرار ان با یکدیگر برار نیستند.",
   "hereIsYourFirstStepWithUs": "اولین قدم شما برای با هم بودن",
   "weakPassword": "گذرواژه وارد شده ضعیف می باشد.",
-  "emailAlreadyInUse": "ایمیل وارد شده قبلا استفاده شده است."
+  "emailAlreadyInUse": "ایمیل وارد شده قبلا استفاده شده است.",
+  "login": "ورود",
+  "userNotFound": "یوزری با این مشخصات یافت نشد.",
+  "wrongPassword": "گذرواژه وارد شده اشتباه می باشد.",
+  "alreadyHaveAnAccount": "حساب کاربری دارم",
+  "doNotHaveAnAccount": "حساب کاربری ندارم",
+  "createAccount": "ساخت حساب",
+  "forgotPassword": "فراموشی گذرواژه",
+  "continueText": "ادامه",
+  "passwordResetLinkAreSendToEmail": "آدرس ایمیل مرتبط با حساب خود را وارد کنید و ما پیوندی برای بازنشانی رمز عبور برای شما ارسال خواهیم کرد.",
+  "backToLogin": "برگشت به ورود"
+
 }

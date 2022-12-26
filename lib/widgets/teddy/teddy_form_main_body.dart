@@ -1,24 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
+import 'package:messenger/providers/teddy_provider.dart';
 import 'package:messenger/widgets/teddy/teddy_widget.dart';
+import 'package:provider/provider.dart';
 
 class TeddyFormMainBody extends StatelessWidget {
   final Widget child;
-  final bool check;
-  final bool handsUp;
-  final bool success;
-  final bool fail;
-  final double look;
-  final Function()? onClickTeddy;
 
   const TeddyFormMainBody({
     required this.child,
-    required this.check,
-    required this.handsUp,
-    required this.success,
-    required this.fail,
-    required this.look,
-    this.onClickTeddy,
     Key? key,
   }) : super(key: key);
 
@@ -27,14 +17,16 @@ class TeddyFormMainBody extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        InkWell(
-          onTap: onClickTeddy,
-          child: TeddyWidget(
-            check: check,
-            handsUp: handsUp,
-            success: success,
-            fail: fail,
-            look: look,
+        Consumer<TeddyProvider>(
+          builder: (context, teddyProvider, child) => InkWell(
+            onTap: teddyProvider.setIdle,
+            child: TeddyWidget(
+              check: teddyProvider.check,
+              handsUp: teddyProvider.handsUp,
+              success: teddyProvider.success,
+              fail: teddyProvider.fail,
+              look: teddyProvider.look,
+            ),
           ),
         ),
         Card(
@@ -44,7 +36,11 @@ class TeddyFormMainBody extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(ScreenValues.paddingLarge),
-            child: child,
+            child: AnimatedSize(
+              duration: const Duration(milliseconds: 500),
+              alignment: Alignment.topCenter,
+              child: child,
+            ),
           ),
         ),
       ],

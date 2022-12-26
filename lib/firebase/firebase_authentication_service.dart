@@ -64,5 +64,20 @@ class FirebaseAuthenticationService {
     }
   }
 
+  Future<ResponseAPI> forgotPassword({
+    required String emailAddress,
+  }) async {
+    try {
+      await _auth?.sendPasswordResetEmail(
+        email: emailAddress,
+      );
+      return ResponseAPI.success(response: true);
+    } on FirebaseAuthException catch (e) {
+      return ResponseAPI.error(error: e.code);
+    } catch (e) {
+      return ResponseAPI.error(error: e.toString());
+    }
+  }
+
   Future<void> signOut() => FirebaseAuth.instance.signOut();
 }

@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 
 class TeddyFormMobile extends StatelessWidget {
-  final Widget header;
   final Widget mainBody;
+  final Widget? footer;
+  final Widget? header;
 
   const TeddyFormMobile({
-    required this.header,
+    this.header,
     required this.mainBody,
+    this.footer,
     Key? key,
   }) : super(key: key);
 
@@ -19,8 +21,9 @@ class TeddyFormMobile extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            header,
+            header ?? const SizedBox(),
             mainBody,
+            footer ?? const SizedBox(),
           ],
         ),
       ),

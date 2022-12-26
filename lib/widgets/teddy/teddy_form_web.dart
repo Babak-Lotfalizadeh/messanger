@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 
 class TeddyFormWeb extends StatelessWidget {
-  final Widget header;
   final Widget mainBody;
+  final Widget? footer;
+  final Widget? header;
 
   const TeddyFormWeb({
-    required this.header,
+    this.header,
     required this.mainBody,
+    this.footer,
     Key? key,
   }) : super(key: key);
 
@@ -23,7 +25,12 @@ class TeddyFormWeb extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: header,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      header ?? const SizedBox()
+                    ],
+                  ),
                 ),
                 Expanded(
                   child: Container(
@@ -36,7 +43,9 @@ class TeddyFormWeb extends StatelessWidget {
                         right: Radius.circular(ScreenValues.radiusNormal),
                       ),
                     ),
-                    child: mainBody,
+                    child: Column(
+                      children: [mainBody, footer ?? const SizedBox()],
+                    ),
                   ),
                 ),
               ],

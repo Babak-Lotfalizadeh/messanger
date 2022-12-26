@@ -15,49 +15,59 @@ class BottomSheetWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(ScreenValues.radiusLarge),
-          bottom: Radius.zero,
-        ),
-        color: Theme.of(context).cardColor,
+    final verticalOffset = MediaQuery.of(context).viewInsets.bottom;
+
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 100),
+      transform: Matrix4.translationValues(
+        0.0,
+        -verticalOffset,
+        0.0,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Align(
-            alignment: Alignment.center,
-            child: Container(
-              height: ScreenValues.paddingSmall,
-              width: ScreenValues.paddingXLarge,
-              margin: const EdgeInsets.all(ScreenValues.paddingNormal),
-              decoration: BoxDecoration(
-                color: Theme.of(context).dividerColor,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.vertical(
+            top: Radius.circular(ScreenValues.radiusLarge),
+            bottom: Radius.zero,
+          ),
+          color: Theme.of(context).cardColor,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                height: ScreenValues.paddingSmall,
+                width: ScreenValues.paddingXLarge,
+                margin: const EdgeInsets.all(ScreenValues.paddingNormal),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).dividerColor,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: ScreenValues.paddingLarge),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: ScreenValues.paddingLarge,
+            const SizedBox(height: ScreenValues.paddingLarge),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: ScreenValues.paddingLarge,
+              ),
+              child: Text(
+                title,
+                style: Theme.of(context).textTheme.headline5?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+              ),
             ),
-            child: Text(
-              title,
-              style: Theme.of(context).textTheme.headline5?.copyWith(
-                    fontWeight: FontWeight.w700,
+            Padding(
+              padding: padding ??
+                  const EdgeInsets.all(
+                    ScreenValues.paddingLarge,
                   ),
+              child: child,
             ),
-          ),
-          Padding(
-            padding: padding ??
-                const EdgeInsets.all(
-                  ScreenValues.paddingLarge,
-                ),
-            child: child,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
