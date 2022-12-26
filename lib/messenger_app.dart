@@ -3,7 +3,6 @@ import 'package:messenger/providers/language_provider.dart';
 import 'package:messenger/providers/theme_provider.dart';
 import 'package:messenger/screens/splash_page.dart';
 import 'package:messenger/services/navigation_service.dart';
-import 'package:messenger/services/snack_bar_service.dart';
 import 'package:messenger/utilities/imports.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +21,6 @@ class MessengerApp extends StatelessWidget {
       darkTheme: context.watch<ThemeProvider>().darkThemeData,
       themeMode: context.watch<ThemeProvider>().themeMode,
       navigatorKey: NavigationService.navigatorKey,
-      scaffoldMessengerKey: SnackBarService.scaffoldMessengerKey,
       home: const SplashPage(),
     );
   }

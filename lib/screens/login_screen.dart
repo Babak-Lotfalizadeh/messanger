@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
     } else if (response == FirebaseLoginErrorEnum.wrongPassword.code) {
       error = strings?.wrongPassword;
     }
-    SnackBarService().show(error);
+    SnackBarService.show(message: error, context: context);
   }
 
   @override

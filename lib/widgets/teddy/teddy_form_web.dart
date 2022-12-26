@@ -15,40 +15,54 @@ class TeddyFormWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Container(
-          constraints: ScreenValues.webConstraints,
-          child: Card(
+    return SafeArea(
+      child: Material(
+        child: Center(
+          child: Container(
             margin: const EdgeInsets.all(ScreenValues.paddingXLarge),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      header ?? const SizedBox()
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.all(
-                      ScreenValues.paddingXLarge,
+            constraints: ScreenValues.webConstraints,
+            child: Card(
+              margin: const EdgeInsets.symmetric(
+                vertical: 0,
+                horizontal: 0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        header ?? const SizedBox(),
+                      ],
                     ),
-                    decoration: const BoxDecoration(
-                      color: ScreenValues.teddyBackground,
-                      borderRadius: BorderRadius.horizontal(
-                        right: Radius.circular(ScreenValues.radiusNormal),
+                  ),
+                  Expanded(
+                    child: Container(
+                      // padding: const EdgeInsets.all(
+                      //   ScreenValues.paddingXLarge,
+                      // ),todo
+                      decoration: const BoxDecoration(
+                        color: ScreenValues.teddyBackground,
+                        borderRadius: BorderRadius.horizontal(
+                          right: Radius.circular(ScreenValues.radiusNormal),
+                        ),
+                      ),
+                      child: Scaffold(
+                        backgroundColor: Colors.transparent,
+                        body: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              mainBody,
+                              footer ?? const SizedBox(),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                    child: Column(
-                      children: [mainBody, footer ?? const SizedBox()],
-                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

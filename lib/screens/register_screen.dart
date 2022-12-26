@@ -23,7 +23,7 @@ class RegisterScreen extends StatelessWidget {
     } else if (response == FirebaseRegisterErrorEnum.emailAlreadyInUse.code) {
       error = strings?.emailAlreadyInUse;
     }
-    SnackBarService().show(error);
+    SnackBarService.show(message: error, context: context);
   }
 
   @override

@@ -16,14 +16,14 @@ class ForgotPasswordScreen extends StatelessWidget {
   void _showSuccess(BuildContext context) {
     var strings = AppLocalizations.of(context);
     var message = strings?.passwordResetLinkAreSendToEmail;
-    SnackBarService().show(message);
+    SnackBarService.show(message: message, context: context);
     context.read<AuthenticationProvider>().goLogin();
   }
 
   void _showError(BuildContext context, String response) {
     var strings = AppLocalizations.of(context);
     var error = strings?.unknownError;
-    SnackBarService().show(error);
+    SnackBarService.show(message: error, context: context);
   }
 
   @override
