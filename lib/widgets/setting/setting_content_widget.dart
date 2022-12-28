@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
+import 'package:messenger/firebase/firebase_authentication_service.dart';
 import 'package:messenger/providers/theme_provider.dart';
+import 'package:messenger/screens/splash_page.dart';
 import 'package:messenger/services/bottom_sheet_service.dart';
+import 'package:messenger/services/dialog_service.dart';
 import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/utilities/imports.dart';
 import 'package:messenger/widgets/setting/bottom_sheet_change_language.dart';
 import 'package:messenger/widgets/setting/bottom_sheet_change_theme.dart';
+import 'package:messenger/widgets/setting/rounded_box_widget.dart';
 import 'package:messenger/widgets/setting/setting_category_widget.dart';
 import 'package:messenger/widgets/setting/setting_item_card.dart';
 import 'package:messenger/widgets/switch_widget.dart';
+import 'package:messenger/widgets/user/user_widget.dart';
 import 'package:provider/provider.dart';
 
 class SettingContentWidget extends StatelessWidget {
   const SettingContentWidget({
     Key? key,
   }) : super(key: key);
+
+  void _logout(BuildContext context) {
+    DialogService.showYesOrNo(
+      title: AppLocalizations.of(context)?.logOut ?? "",
+      description:
+          AppLocalizations.of(context)?.areYouSureYouWantToLogout ?? "",
+      context: context,
+      onYes: () {
+        FirebaseAuthenticationService().signOut().then((value) {
+          NavigationService.pushAndRemoveUntil(const SplashPage());
+        });
+      },
+    );
+  }
 
   void _showChangeLanguage(BuildContext context) {
     BottomSheetService.show(
@@ -70,23 +89,11 @@ class SettingContentWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var strings = AppLocalizations.of(context);
+    var currentUser = FirebaseAuthenticationService().currentUser;
     var isDarkMode = context.watch<ThemeProvider>().getIsDarkMode(context);
     String? inThisMode() {
       return isDarkMode ? strings?.inDarkMode : strings?.inLightMode;
     }
-
-    Widget icon(Color? color) => Container(
-          width: ScreenValues.iconNormal,
-          height: ScreenValues.iconNormal,
-          decoration: BoxDecoration(
-            color: color,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(
-                ScreenValues.radiusNormal,
-              ),
-            ),
-          ),
-        );
 
     return Center(
       child: Container(
@@ -94,14 +101,20 @@ class SettingContentWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            UserWidget(user: currentUser),
             SettingCategoryWidget(
-              title: strings?.general ?? "",
+              title: strings?.userSetting ?? "",
               items: [
                 SettingItemCard(
                   title: strings?.language ?? "",
                   iconData: Icons.language_outlined,
                   value: strings?.currentLanguage,
                   onClick: () => _showChangeLanguage(context),
+                ),
+                SettingItemCard(
+                  title: strings?.logOut ?? "",
+                  iconData: Icons.logout,
+                  onClick: () => _logout(context),
                 ),
               ],
             ),
@@ -136,20 +149,25 @@ class SettingContentWidget extends StatelessWidget {
                 SettingItemCard(
                   title: "${strings?.primaryColor ?? " "} ${inThisMode()}",
                   iconData: Icons.color_lens_outlined,
-                  widgetValue: icon(Theme.of(context).primaryColor),
+                  widgetValue: RoundedBoxWidget(
+                    color: Theme.of(context).primaryColor,
+                  ),
                   onClick: () => _showChangeThemePrimary(context),
                 ),
                 SettingItemCard(
                   title: "${strings?.primaryTextColor ?? ""} ${inThisMode()}",
                   iconData: Icons.format_color_text_outlined,
-                  widgetValue:
-                      icon(Theme.of(context).textTheme.bodyText1?.color),
+                  widgetValue: RoundedBoxWidget(
+                    color: Theme.of(context).textTheme.bodyText1?.color,
+                  ),
                   onClick: () => _showChangeThemePrimaryText(context),
                 ),
                 SettingItemCard(
                   title: "${strings?.secondaryColor ?? ""} ${inThisMode()}",
                   iconData: Icons.color_lens_outlined,
-                  widgetValue: icon(Theme.of(context).colorScheme.secondary),
+                  widgetValue: RoundedBoxWidget(
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
                   onClick: () => _showChangeThemeSecondary(context),
                 ),
               ],

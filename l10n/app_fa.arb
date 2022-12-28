@@ -36,6 +36,12 @@
   "forgotPassword": "فراموشی گذرواژه",
   "continueText": "ادامه",
   "passwordResetLinkAreSendToEmail": "آدرس ایمیل مرتبط با حساب خود را وارد کنید و ما پیوندی برای بازنشانی رمز عبور برای شما ارسال خواهیم کرد.",
-  "backToLogin": "برگشت به ورود"
+  "backToLogin": "برگشت به ورود",
+  "userSetting": "تنضیمات کاربری",
+  "logOut": "خروج از حساب",
+  "displayName": "نام نمایشی",
+  "yes": "بله",
+  "no": "خیر",
+  "areYouSureYouWantToLogout": "آیا مطمئا هستید که میخواهید از حساب خارج شوید ؟"
 
 }

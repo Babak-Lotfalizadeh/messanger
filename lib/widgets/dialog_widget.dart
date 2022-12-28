@@ -6,11 +6,13 @@ class DialogWidget extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
   final String title;
+  final bool showClose;
 
   const DialogWidget({
     required this.title,
     required this.child,
     this.padding,
+    this.showClose = true,
     Key? key,
   }) : super(key: key);
 
@@ -48,9 +50,12 @@ class DialogWidget extends StatelessWidget {
                                   ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: () => NavigationService.pop(),
-                        icon: const Icon(Icons.close),
+                      Visibility(
+                        visible: showClose,
+                        child: IconButton(
+                          onPressed: () => NavigationService.pop(),
+                          icon: const Icon(Icons.close),
+                        ),
                       ),
                     ],
                   ),

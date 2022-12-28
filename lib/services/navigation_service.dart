@@ -28,6 +28,16 @@ class NavigationService {
     }
   }
 
+  static void pushAndRemoveUntil(Widget page) {
+    if (_context != null) {
+      Navigator.of(_context!).pushAndRemoveUntil(
+          MaterialPageRoute(
+            builder: (context) => page,
+          ),
+          (Route<dynamic> route) => false);
+    }
+  }
+
   static void push(Widget page) {
     if (_context != null) {
       Navigator.of(_context!).push(

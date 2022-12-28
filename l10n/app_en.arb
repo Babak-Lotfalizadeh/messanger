@@ -38,5 +38,11 @@
   "forgotPassword": "Forgot password",
   "continueText": "continue",
   "passwordResetLinkAreSendToEmail": "Enter the email address associated with your account and we'll send you a link to reset your password.",
-  "backToLogin": "Back to login"
+  "backToLogin": "Back to login",
+  "userSetting": "User setting",
+  "logOut": "Log out",
+  "displayName": "Display name",
+  "yes": "Yes",
+  "no": "No",
+  "areYouSureYouWantToLogout": "Are you sure you want to logout ?"
 }
