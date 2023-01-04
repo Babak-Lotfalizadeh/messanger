@@ -49,15 +49,17 @@ class DefaultFirebaseOptions {
     messagingSenderId: '358753272653',
     projectId: 'flutter-messanger-b99a3',
     authDomain: 'flutter-messanger-b99a3.firebaseapp.com',
+    databaseURL: 'https://flutter-messanger-b99a3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'flutter-messanger-b99a3.appspot.com',
     measurementId: 'G-47QE6NKBHT',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDENI5eUzI92RD9w-9978Wc49aKiwXeo4c',
-    appId: '1:358753272653:android:2a9ef402c44e757bb86d04',
+    appId: '1:358753272653:android:d66b24c94fe6de01b86d04',
     messagingSenderId: '358753272653',
     projectId: 'flutter-messanger-b99a3',
+    databaseURL: 'https://flutter-messanger-b99a3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'flutter-messanger-b99a3.appspot.com',
   );
 
@@ -66,6 +68,7 @@ class DefaultFirebaseOptions {
     appId: '1:358753272653:ios:b0bfbfd8f0c7ced7b86d04',
     messagingSenderId: '358753272653',
     projectId: 'flutter-messanger-b99a3',
+    databaseURL: 'https://flutter-messanger-b99a3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'flutter-messanger-b99a3.appspot.com',
     iosClientId: '358753272653-5bbhbegodmj620lv82jj8i4tjk4mlpi2.apps.googleusercontent.com',
     iosBundleId: 'com.example.messenger',
@@ -76,6 +79,7 @@ class DefaultFirebaseOptions {
     appId: '1:358753272653:ios:b0bfbfd8f0c7ced7b86d04',
     messagingSenderId: '358753272653',
     projectId: 'flutter-messanger-b99a3',
+    databaseURL: 'https://flutter-messanger-b99a3-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'flutter-messanger-b99a3.appspot.com',
     iosClientId: '358753272653-5bbhbegodmj620lv82jj8i4tjk4mlpi2.apps.googleusercontent.com',
     iosBundleId: 'com.example.messenger',

@@ -22,10 +22,10 @@ class SettingContentWidget extends StatelessWidget {
   }) : super(key: key);
 
   void _logout(BuildContext context) {
+    var strings = AppLocalizations.of(context);
     DialogService.showYesOrNo(
-      title: AppLocalizations.of(context)?.logOut ?? "",
-      description:
-          AppLocalizations.of(context)?.areYouSureYouWantToLogout ?? "",
+      title: strings?.logOut ?? "",
+      description: strings?.areYouSureYouWantToLogout ?? "",
       context: context,
       onYes: () {
         FirebaseAuthenticationService().signOut().then((value) {

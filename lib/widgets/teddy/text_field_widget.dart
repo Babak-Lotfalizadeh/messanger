@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:messenger/enums/text_field_design.dart';
 import 'package:messenger/enums/text_field_rule.dart';
 import 'package:messenger/utilities/imports.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final String? labelText;
+  final String? hintText;
   final GestureTapCallback? onTap;
   final Function()? onEditingComplete;
   final String? Function(String? input)? validator;
@@ -11,17 +13,22 @@ class TextFieldWidget extends StatefulWidget {
   final TextEditingController? controller;
   final bool obscureText;
   final Widget? prefixIcon;
+  final Widget? suffixIcon;
   final TextFieldRule? textFieldRule;
+  final TextFieldDesign textFieldDesign;
 
   const TextFieldWidget({
     this.labelText,
+    this.hintText,
     this.onTap,
     this.onEditingComplete,
     this.focusNode,
     this.controller,
     this.prefixIcon,
+    this.suffixIcon,
     this.textFieldRule,
     this.validator,
+    this.textFieldDesign = TextFieldDesign.normal,
     this.obscureText = false,
     Key? key,
   }) : super(key: key);
@@ -34,6 +41,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   bool _showPassword = false;
 
   Widget? _suffixIcon() {
+    if (widget.suffixIcon != null) {
+      return widget.suffixIcon;
+    }
+
     if (widget.obscureText) {
       if (!_showPassword) {
         return InkWell(
@@ -100,6 +111,15 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
     }
   }
 
+  InputBorder get border {
+    switch (widget.textFieldDesign) {
+      case TextFieldDesign.normal:
+        return const OutlineInputBorder();
+      case TextFieldDesign.borderLess:
+        return InputBorder.none;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -116,7 +136,8 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
         labelText: widget.labelText,
         prefixIcon: widget.prefixIcon,
         suffixIcon: _suffixIcon(),
-        border: const OutlineInputBorder(),
+        hintText: widget.hintText,
+        border: border,
       ),
     );
   }

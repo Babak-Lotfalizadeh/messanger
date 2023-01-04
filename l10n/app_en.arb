@@ -44,5 +44,8 @@
   "displayName": "Display name",
   "yes": "Yes",
   "no": "No",
-  "areYouSureYouWantToLogout": "Are you sure you want to logout ?"
+  "areYouSureYouWantToLogout": "Are you sure you want to logout ?",
+  "writeYourMessage": "Write you message...",
+  "contacts": "Contacts",
+  "chats": "Chats"
 }

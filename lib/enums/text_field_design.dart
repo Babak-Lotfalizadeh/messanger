@@ -1,0 +1,4 @@
+enum TextFieldDesign {
+  normal,
+  borderLess,
+}
