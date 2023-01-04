@@ -5,6 +5,7 @@ class ScreenValues {
   static const String fontFamilyRighteous = "Righteous";
   static const double iconSmall = 20;
   static const double iconNormal = 24;
+  static const double iconLarge = 48;
   static const double paddingNormal = 8;
   static const double paddingSmall = paddingNormal * 0.5;
   static const double paddingLarge = paddingNormal * 2;
