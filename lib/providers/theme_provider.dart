@@ -6,10 +6,10 @@ import 'package:messenger/services/shared_preference_service.dart';
 
 class ThemeProvider extends ChangeNotifier {
   bool _material3 = true;
-  Color _primaryColorLight = Colors.blue;
+  Color _primaryColorLight = const Color(0xff90DFAA);
   Color _secondaryColorLight = Colors.blue;
   Color? _primaryTextColorLight;
-  Color _primaryColorDark = Colors.blue;
+  Color _primaryColorDark = const Color(0xff90DFAA);
   Color _secondaryColorDark = Colors.blue;
   Color? _primaryTextColorDark;
   ThemeMode? _themeMode;
@@ -68,7 +68,9 @@ class ThemeProvider extends ChangeNotifier {
       SharedPreferenceEnum.material3,
     );
 
-    _themeMode = darkModeValue == true ? ThemeMode.dark : ThemeMode.light;
+    if (darkModeValue != null) {
+      _themeMode = darkModeValue == true ? ThemeMode.dark : ThemeMode.light;
+    }
     _material3 = material3Value ?? true;
   }
 

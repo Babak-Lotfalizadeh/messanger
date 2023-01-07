@@ -14,6 +14,7 @@ class ScreenValues {
   static const double radiusNormal = 8;
   static const double radiusLarge = radiusNormal * 2;
   static const double radiusXLarge = radiusNormal * 4;
+  static const double smallImageSize = 100;
   static const double normalImageSize = 200;
   static const double loginHeaderHeight = 80;
   static const Duration fastAnimation = Duration(milliseconds: 300);

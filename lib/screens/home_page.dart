@@ -4,6 +4,7 @@ import 'package:messenger/providers/contacts_provider.dart';
 import 'package:messenger/utilities/imports.dart';
 import 'package:messenger/widgets/app_bar_widget.dart';
 import 'package:messenger/widgets/contact/contact_card.dart';
+import 'package:messenger/widgets/home/drawer_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,6 +19,7 @@ class HomePage extends StatelessWidget {
           appBar: AppBarWidget(
             title: AppLocalizations.of(context)?.chats,
           ),
+          drawer: const HomeDrawer(),
           body: SafeArea(
             child: ListView.separated(
               padding: const EdgeInsets.all(ScreenValues.paddingNormal),

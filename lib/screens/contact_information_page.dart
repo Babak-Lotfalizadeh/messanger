@@ -20,7 +20,7 @@ class ContactInformationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget fallbackImage() => Container(
-          color: const Color(0xff90DFAA),
+          color: Theme.of(context).primaryColor,
           child: SvgPicture.asset(
             Assets.userManNoBackground.value,
             width: double.infinity,
