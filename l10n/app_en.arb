@@ -47,5 +47,6 @@
   "areYouSureYouWantToLogout": "Are you sure you want to logout ?",
   "writeYourMessage": "Write you message...",
   "contacts": "Contacts",
-  "chats": "Chats"
+  "chats": "Chats",
+  "signOut": "Sign out"
 }

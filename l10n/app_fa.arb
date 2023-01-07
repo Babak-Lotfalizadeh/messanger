@@ -45,5 +45,7 @@
   "areYouSureYouWantToLogout": "آیا مطمئا هستید که میخواهید از حساب خارج شوید ؟",
   "writeYourMessage": "پیغام خود را بنویسید...",
   "contacts": "مخاطبین",
-  "chats": "گفتگو ها"
+  "chats": "گفتگو ها",
+  "signOut": "خروج از حساب"
+
 }

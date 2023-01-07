@@ -47,4 +47,15 @@ class NavigationService {
       );
     }
   }
+
+  static void popPush(Widget page) {
+    if (_context != null) {
+      Navigator.of(_context!).pop();
+      Navigator.of(_context!).push(
+        MaterialPageRoute(
+          builder: (context) => page,
+        ),
+      );
+    }
+  }
 }
