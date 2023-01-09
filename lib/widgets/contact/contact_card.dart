@@ -16,11 +16,16 @@ class ContactCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        NavigationService.push(ChatPage(contactViewModel: contactViewModel));
-      },
-      child: Card(
+    return Card(
+      child: InkWell(
+        borderRadius: const BorderRadius.all(
+          Radius.circular(ScreenValues.radiusNormal),
+        ),
+        splashColor: Theme.of(context).primaryColor,
+        splashFactory: InkRipple.splashFactory,
+        onTap: () {
+          NavigationService.push(ChatPage(contactViewModel: contactViewModel));
+        },
         child: Padding(
           padding: const EdgeInsets.all(ScreenValues.paddingLarge),
           child: Row(
