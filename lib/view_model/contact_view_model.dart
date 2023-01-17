@@ -5,11 +5,12 @@ part 'contact_view_model.g.dart';
 
 @JsonSerializable()
 class ContactViewModel {
-  final String id, chatId, title;
+  final String userId, chatId, title, contactId;
   final String? imageAddress;
 
   const ContactViewModel({
-    required this.id,
+    required this.userId,
+    required this.contactId,
     required this.title,
     required this.chatId,
     required this.imageAddress,

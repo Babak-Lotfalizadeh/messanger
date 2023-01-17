@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:messenger/firebase/firebase_database_service.dart';
+import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/view_model/chat_view_model.dart';
 import 'package:messenger/view_model/contact_view_model.dart';
 
@@ -29,17 +29,14 @@ class ChatsProvider extends ChangeNotifier {
   }
 
   void getChats() {
-    FirebaseDatabaseService()
+    FirebaseFireStoreService()
         .getChats(_contactViewModel?.chatId)
         ?.listen((newValue) {
       _chats = newValue ?? [];
-      _sort();
       notifyListeners();
       scrollToEnd();
     });
   }
-
-  void _sort() => _chats.sort((a, b) => a.getDateTime.compareTo(b.getDateTime));
 
   bool senderOfNextIsTheSame(int index) {
     var currentOneId = _chats[index].sender;

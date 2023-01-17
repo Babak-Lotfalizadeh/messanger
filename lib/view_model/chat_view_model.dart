@@ -1,19 +1,24 @@
 // ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
+import 'package:messenger/view_model/timestamp_converter.dart';
 
 part 'chat_view_model.g.dart';
 
 @JsonSerializable()
 class ChatViewModel {
-  final String id, message, sender, receiver, dateTime;
+  final String id, message, sender, receiver, chatId;
   final bool received, seen;
+  @TimestampConverter()
+  final DateTime dateTime;
   @JsonKey(ignore: true)
   bool sendByMe;
 
   ChatViewModel({
     required this.id,
     required this.message,
+    required this.chatId,
     required this.sender,
     required this.receiver,
     required this.received,
@@ -24,24 +29,15 @@ class ChatViewModel {
     sendByMe = (sender == FirebaseAuthenticationService().currentUser?.uid);
   }
 
-  DateTime get getDateTime => DateTime.parse(dateTime);
+  String date() => "${dateTime.year}/${dateTime.month}/${dateTime.day}";
 
-  String date() {
-    var chatDate = getDateTime;
-    return "${chatDate.year}/${chatDate.month}/${chatDate.day}";
-  }
-
-  String time() {
-    var chatDate = getDateTime;
-    return "${chatDate.hour}:${chatDate.second}";
-  }
+  String time() => "${dateTime.hour}:${dateTime.second}";
 
   bool isToday() {
     var now = DateTime.now();
-    var chatDate = getDateTime;
-    return ((chatDate.year == now.year) &&
-        (chatDate.month == now.month) &&
-        (chatDate.day == now.day));
+    return ((dateTime.year == now.year) &&
+        (dateTime.month == now.month) &&
+        (dateTime.day == now.day));
   }
 
   factory ChatViewModel.fromJson(Map<String, dynamic> json) =>

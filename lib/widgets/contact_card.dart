@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/enums/hero_code.dart';
-import 'package:messenger/screens/chat_page.dart';
-import 'package:messenger/services/navigation_service.dart';
-import 'package:messenger/view_model/contact_view_model.dart';
 import 'package:messenger/widgets/user/user_image_widget.dart';
 
 class ContactCard extends StatelessWidget {
-  final ContactViewModel? contactViewModel;
+  final String? title;
+  final String? backupTitle;
+  final String? imageURL;
+  final Function() onTab;
 
   const ContactCard({
-    required this.contactViewModel,
+    required this.onTab,
+    required this.title,
+    required this.backupTitle,
+    required this.imageURL,
     Key? key,
   }) : super(key: key);
 
@@ -23,9 +26,7 @@ class ContactCard extends StatelessWidget {
         ),
         splashColor: Theme.of(context).primaryColor,
         splashFactory: InkRipple.splashFactory,
-        onTap: () {
-          NavigationService.push(ChatPage(contactViewModel: contactViewModel));
-        },
+        onTap: onTab,
         child: Padding(
           padding: const EdgeInsets.all(ScreenValues.paddingLarge),
           child: Row(
@@ -33,13 +34,13 @@ class ContactCard extends StatelessWidget {
               Hero(
                 tag: HeroCode.userImage.toString(),
                 child: UserImageWidget(
-                  userImageAddress: contactViewModel?.imageAddress,
+                  userImageAddress: imageURL,
                   size: ScreenValues.iconLarge,
                 ),
               ),
               const SizedBox(width: ScreenValues.paddingNormal),
               Text(
-                contactViewModel?.title ?? "",
+                ((title?.isNotEmpty == true) ? title :  backupTitle) ?? "",
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ],

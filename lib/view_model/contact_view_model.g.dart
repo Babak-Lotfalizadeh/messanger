@@ -8,7 +8,8 @@ part of 'contact_view_model.dart';
 
 ContactViewModel _$ContactViewModelFromJson(Map<String, dynamic> json) =>
     ContactViewModel(
-      id: json['id'] as String,
+      userId: json['userId'] as String,
+      contactId: json['contactId'] as String,
       title: json['title'] as String,
       chatId: json['chatId'] as String,
       imageAddress: json['imageAddress'] as String?,
@@ -16,8 +17,9 @@ ContactViewModel _$ContactViewModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$ContactViewModelToJson(ContactViewModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      'userId': instance.userId,
       'chatId': instance.chatId,
       'title': instance.title,
+      'contactId': instance.contactId,
       'imageAddress': instance.imageAddress,
     };

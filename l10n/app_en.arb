@@ -48,5 +48,6 @@
   "writeYourMessage": "Write you message...",
   "contacts": "Contacts",
   "chats": "Chats",
-  "signOut": "Sign out"
+  "signOut": "Sign out",
+  "newMessage": "New message"
 }

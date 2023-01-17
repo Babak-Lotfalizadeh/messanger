@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
+import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/providers/teddy_provider.dart';
 
 class RegisterProvider extends ChangeNotifier {
@@ -73,6 +74,7 @@ class RegisterProvider extends ChangeNotifier {
     ))
         .fold(
       whenSuccess: (newValue) {
+        FirebaseFireStoreService().setNewUser(newValue);
         _teddyProvider.setSuccess().then(
           (value) {
             whenSuccess?.call();
