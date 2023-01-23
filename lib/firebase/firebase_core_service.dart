@@ -5,6 +5,7 @@ import 'package:messenger/firebase/firebase_authentication_service.dart';
 import 'package:messenger/firebase/firebase_crashlytics_service.dart';
 import 'package:messenger/firebase/firebase_database_service.dart';
 import 'package:messenger/firebase/firebase_fire_store_service.dart';
+import 'package:messenger/firebase/firebase_function_service.dart';
 import 'package:messenger/firebase_options.dart';
 
 class FirebaseCoreService {
@@ -26,6 +27,7 @@ class FirebaseCoreService {
     await _initAuthentication();
     await _initDatabase();
     await _initFirebaseFireStore();
+    await _initFunctions();
   }
 
   Future<void> _initAnalytics() => FirebaseAnalyticsService().init();
@@ -37,4 +39,6 @@ class FirebaseCoreService {
   Future<void> _initDatabase() => FirebaseDatabaseService().init();
 
   Future<void> _initFirebaseFireStore() => FirebaseFireStoreService().init();
+
+  Future<void> _initFunctions() => FirebaseFunctionService().init();
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
-import 'package:messenger/firebase/firebase_fire_store_service.dart';
+import 'package:messenger/firebase/firebase_function_service.dart';
 import 'package:messenger/view_model/contact_view_model.dart';
 
 class ChatSendSectionProvider extends ChangeNotifier {
@@ -13,10 +13,10 @@ class ChatSendSectionProvider extends ChangeNotifier {
     if (controller.text.isEmpty) {
       return;
     }
-    FirebaseFireStoreService().sendMessage(
-      userId: _userId,
-      message: controller.text,
-      contactViewModel: contactViewModel,
+    FirebaseFunctionService().addMessage(
+        userId: _userId,
+        message: controller.text,
+        contactViewModel: contactViewModel,
     );
     controller.clear();
   }

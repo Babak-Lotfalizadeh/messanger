@@ -21,26 +21,24 @@ class HomePage extends StatelessWidget {
           title: AppLocalizations.of(context)?.chats,
         ),
         drawer: const HomeDrawer(),
-        body: SafeArea(
-          child: ListView.separated(
-            padding: const EdgeInsets.all(ScreenValues.paddingNormal),
-            itemBuilder: (context, index) {
-              var item = contactsProvider.contacts[index];
+        body: ListView.separated(
+          padding: const EdgeInsets.all(ScreenValues.paddingNormal),
+          itemBuilder: (context, index) {
+            var item = contactsProvider.contacts[index];
 
-              return ContactCard(
-                imageURL: item.imageAddress,
-                title: item.title,
-                backupTitle: item.chatId,
-                onTab: () {
-                  NavigationService.push(ChatPage(contactViewModel: item));
-                },
-              );
-            },
-            separatorBuilder: (context, index) => const SizedBox(
-              height: ScreenValues.paddingNormal,
-            ),
-            itemCount: contactsProvider.contacts.length,
+            return ContactCard(
+              imageURL: item.imageAddress,
+              title: item.title,
+              backupTitle: item.chatId,
+              onTab: () {
+                NavigationService.push(ChatPage(contactViewModel: item));
+              },
+            );
+          },
+          separatorBuilder: (context, index) => const SizedBox(
+            height: ScreenValues.paddingNormal,
           ),
+          itemCount: contactsProvider.contacts.length,
         ),
         floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.message_outlined),

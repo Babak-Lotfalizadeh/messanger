@@ -15,8 +15,7 @@ ChatViewModel _$ChatViewModelFromJson(Map<String, dynamic> json) =>
       receiver: json['receiver'] as String,
       received: json['received'] as bool,
       seen: json['seen'] as bool,
-      dateTime:
-          const TimestampConverter().fromJson(json['dateTime'] as Timestamp),
+      dateTime: json['dateTime'] as String,
     );
 
 Map<String, dynamic> _$ChatViewModelToJson(ChatViewModel instance) =>
@@ -28,5 +27,5 @@ Map<String, dynamic> _$ChatViewModelToJson(ChatViewModel instance) =>
       'chatId': instance.chatId,
       'received': instance.received,
       'seen': instance.seen,
-      'dateTime': const TimestampConverter().toJson(instance.dateTime),
+      'dateTime': instance.dateTime,
     };

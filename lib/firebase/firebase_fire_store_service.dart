@@ -62,25 +62,21 @@ class FirebaseFireStoreService {
     });
   }
 
-  Future<void> sendMessage({
-    required String? userId,
-    required String message,
-    required ContactViewModel? contactViewModel,
-  }) async {
-    var ref = _database?.collection(Routes.chats);
-
-    var model = ChatViewModel(
-      id: const Uuid().v1(),
-      sender: userId ?? "1",
-      message: message,
-      received: false,
-      seen: false,
-      chatId: contactViewModel?.chatId ?? "",
-      receiver: contactViewModel?.contactId ?? "",
-      dateTime: DateTime.now(),
-    );
-    await ref?.add(model.toJson());
-  }
+  // Future<void> sendMessage({
+  //   required String? userId,
+  //   required String message,
+  //   required ContactViewModel? contactViewModel,
+  // }) async {
+    // var ref = _database?.collection(Routes.chats);
+    //
+    // var model = ChatViewModel(
+    //   message: message,
+    //   chatId: contactViewModel?.chatId ?? "",
+    //   receiver: contactViewModel?.contactId ?? "",
+    // );
+    // await ref?.add(model.toJson());
+    //change to function
+  // }
 
   Future<void> setNewUser(UserCredential userCredential) async {
     var ref = _database?.collection(Routes.users);
