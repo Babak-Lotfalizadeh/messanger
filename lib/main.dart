@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   NavigationService();
-  await FirebaseCoreService().init();
+  await FirebaseCoreService.init();
   runApp(
     MultiProvider(
       providers: [

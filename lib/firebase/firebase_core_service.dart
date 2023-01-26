@@ -6,19 +6,15 @@ import 'package:messenger/firebase/firebase_crashlytics_service.dart';
 import 'package:messenger/firebase/firebase_database_service.dart';
 import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/firebase/firebase_function_service.dart';
+import 'package:messenger/firebase/firebase_messaging_service.dart';
 import 'package:messenger/firebase_options.dart';
 
 class FirebaseCoreService {
-  static final FirebaseCoreService _instance = FirebaseCoreService._internal();
+  const FirebaseCoreService._();
 
-  factory FirebaseCoreService() {
-    return _instance;
-  }
-
-  FirebaseCoreService._internal();
-
-  Future<void> init() async {
+  static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
+    _initMessaging();
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
@@ -30,15 +26,17 @@ class FirebaseCoreService {
     await _initFunctions();
   }
 
-  Future<void> _initAnalytics() => FirebaseAnalyticsService().init();
+  static _initAnalytics() => FirebaseAnalyticsService().init();
 
-  Future<void> _initCrashlytics() => FirebaseCrashlyticsService().init();
+  static _initCrashlytics() => FirebaseCrashlyticsService().init();
 
-  Future<void> _initAuthentication() => FirebaseAuthenticationService().init();
+  static _initAuthentication() => FirebaseAuthenticationService().init();
 
-  Future<void> _initDatabase() => FirebaseDatabaseService().init();
+  static _initDatabase() => FirebaseDatabaseService().init();
 
-  Future<void> _initFirebaseFireStore() => FirebaseFireStoreService().init();
+  static _initFirebaseFireStore() => FirebaseFireStoreService().init();
 
-  Future<void> _initFunctions() => FirebaseFunctionService().init();
+  static _initFunctions() => FirebaseFunctionService().init();
+
+  static void _initMessaging() => FirebaseMessagingService.init();
 }

@@ -8,24 +8,24 @@ part of 'chat_view_model.dart';
 
 ChatViewModel _$ChatViewModelFromJson(Map<String, dynamic> json) =>
     ChatViewModel(
-      id: json['id'] as String,
       message: json['message'] as String,
       chatId: json['chatId'] as String,
-      sender: json['sender'] as String,
       receiver: json['receiver'] as String,
-      received: json['received'] as bool,
-      seen: json['seen'] as bool,
-      dateTime: json['dateTime'] as String,
+      id: json['id'] as String?,
+      sender: json['sender'] as String?,
+      received: json['received'] as bool? ?? false,
+      seen: json['seen'] as bool? ?? false,
+      dateTime: json['dateTime'] as String?,
     );
 
 Map<String, dynamic> _$ChatViewModelToJson(ChatViewModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'message': instance.message,
-      'sender': instance.sender,
       'receiver': instance.receiver,
       'chatId': instance.chatId,
+      'id': instance.id,
+      'sender': instance.sender,
+      'dateTime': instance.dateTime,
       'received': instance.received,
       'seen': instance.seen,
-      'dateTime': instance.dateTime,
     };

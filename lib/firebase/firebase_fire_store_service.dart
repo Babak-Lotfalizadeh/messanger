@@ -62,32 +62,21 @@ class FirebaseFireStoreService {
     });
   }
 
-  // Future<void> sendMessage({
-  //   required String? userId,
-  //   required String message,
-  //   required ContactViewModel? contactViewModel,
-  // }) async {
-    // var ref = _database?.collection(Routes.chats);
-    //
-    // var model = ChatViewModel(
-    //   message: message,
-    //   chatId: contactViewModel?.chatId ?? "",
-    //   receiver: contactViewModel?.contactId ?? "",
-    // );
-    // await ref?.add(model.toJson());
-    //change to function
-  // }
-
-  Future<void> setNewUser(UserCredential userCredential) async {
-    var ref = _database?.collection(Routes.users);
+  Future<void> setNewUser({
+    required User? user,
+    required String? fcmToken,
+  }) async {
+    var ref = _database?.collection(Routes.users).doc(user?.uid);
 
     var model = UserViewModel(
-      email: userCredential.user?.email ?? "",
-      imageURL: userCredential.user?.photoURL ?? "",
-      name: userCredential.user?.displayName ?? "",
-      userId: userCredential.user?.uid ?? "",
+      email: user?.email ?? "",
+      imageURL: user?.photoURL ?? "",
+      name: user?.displayName ?? "",
+      userId: user?.uid ?? "",
+      fcmToken: fcmToken ?? "",
     );
-    await ref?.add(model.toJson());
+
+    await ref?.set(model.toJson(), SetOptions(merge: true));
   }
 
   Future<ContactViewModel?> createContact({
