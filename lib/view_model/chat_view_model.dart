@@ -8,7 +8,7 @@ part 'chat_view_model.g.dart';
 class ChatViewModel {
   final String message, receiver, chatId;
   final String? id, sender, dateTime;
-  final bool received, seen;
+  final bool send, received, seen;
   @JsonKey(ignore: true)
   bool sendByMe;
 
@@ -18,8 +18,9 @@ class ChatViewModel {
     required this.receiver,
     this.id,
     this.sender,
-    this.received  = false,
-    this.seen  = false,
+    this.send = false,
+    this.received = false,
+    this.seen = false,
     this.dateTime,
     this.sendByMe = false,
   }) {
@@ -28,7 +29,8 @@ class ChatViewModel {
 
   DateTime get getDateTime => DateTime.parse(dateTime ?? "");
 
-  String date() => "${getDateTime.year}/${getDateTime.month}/${getDateTime.day}";
+  String date() =>
+      "${getDateTime.year}/${getDateTime.month}/${getDateTime.day}";
 
   String time() => "${getDateTime.hour}:${getDateTime.second}";
 

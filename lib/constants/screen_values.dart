@@ -17,6 +17,7 @@ class ScreenValues {
   static const double smallImageSize = 100;
   static const double normalImageSize = 200;
   static const double loginHeaderHeight = 80;
+  static const double receiveIndicatorSize = 20;
   static const Duration fastAnimation = Duration(milliseconds: 300);
   static const Duration normalAnimation = Duration(seconds: 1);
   static const Color teddyBackground = Color(0xffD6E2EA);

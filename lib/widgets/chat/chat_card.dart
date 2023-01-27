@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/view_model/chat_view_model.dart';
 import 'package:messenger/widgets/chat/chat_bubble_paint.dart';
+import 'package:messenger/widgets/chat/indicator_widget.dart';
 
 class ChatCard extends StatelessWidget {
   final bool senderOfNextIsTheSame;
@@ -52,12 +53,18 @@ class ChatCard extends StatelessWidget {
                     chatViewModel?.message ?? "",
                     style: textStyle,
                   ),
-                  Opacity(
-                    opacity: 0.5,
-                    child: Text(
-                      chatViewModel?.time() ?? "",
-                      style: textStyle,
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Opacity(
+                        opacity: 0.5,
+                        child: Text(
+                          chatViewModel?.time() ?? "",
+                          style: textStyle,
+                        ),
+                      ),
+                      IndicatorWidget(chatViewModel: chatViewModel),
+                    ],
                   ),
                 ],
               ),

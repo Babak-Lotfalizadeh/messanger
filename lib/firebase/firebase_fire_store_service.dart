@@ -103,4 +103,16 @@ class FirebaseFireStoreService {
     }
     return null;
   }
+
+  Future<void> updateMessage({
+    required ChatViewModel model,
+    required bool received,
+    required bool seen,
+  }) async {
+    var ref = _database?.collection(Routes.chats).doc(model.id);
+    await ref?.update({
+      "received": received,
+      "seen": seen,
+    });
+  }
 }
