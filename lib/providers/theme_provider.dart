@@ -6,11 +6,11 @@ import 'package:messenger/services/shared_preference_service.dart';
 
 class ThemeProvider extends ChangeNotifier {
   bool _material3 = true;
-  Color _primaryColorLight = const Color(0xff90DFAA);
-  Color _secondaryColorLight = Colors.blue;
+  Color _primaryColorLight = Colors.purple;
+  Color _secondaryColorLight = Colors.purple.shade300;
   Color? _primaryTextColorLight;
-  Color _primaryColorDark = const Color(0xff90DFAA);
-  Color _secondaryColorDark = Colors.blue;
+  Color _primaryColorDark = Colors.purple;
+  Color _secondaryColorDark = Colors.purple.shade700;
   Color? _primaryTextColorDark;
   ThemeMode? _themeMode;
 

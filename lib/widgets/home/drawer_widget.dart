@@ -23,6 +23,11 @@ class HomeDrawer extends StatelessWidget {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  topRight: Radius.circular(
+                    ScreenValues.radiusLarge,
+                  ),
+                ),
                 color: Theme.of(context).primaryColor,
               ),
               margin: EdgeInsets.zero,
@@ -43,7 +48,12 @@ class HomeDrawer extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: ScreenValues.paddingNormal),
-                  Text(user?.email ?? ""),
+                  Text(
+                    user?.email ?? "",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Colors.white,
+                        ),
+                  ),
                 ],
               ),
             ),
