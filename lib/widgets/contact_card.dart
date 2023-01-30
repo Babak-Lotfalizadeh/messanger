@@ -7,6 +7,7 @@ class ContactCard extends StatelessWidget {
   final String? title;
   final String? backupTitle;
   final String? imageURL;
+  final bool heroTag;
   final Function() onTab;
 
   const ContactCard({
@@ -14,11 +15,26 @@ class ContactCard extends StatelessWidget {
     required this.title,
     required this.backupTitle,
     required this.imageURL,
+    this.heroTag = true,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Widget userImage() {
+      var result = UserImageWidget(
+        userImageAddress: imageURL,
+        size: ScreenValues.iconLarge,
+      );
+      if (heroTag) {
+        return Hero(
+          tag: HeroCode.userImage.toString(),
+          child: result,
+        );
+      }
+      return result;
+    }
+
     return Card(
       child: InkWell(
         borderRadius: const BorderRadius.all(
@@ -31,17 +47,11 @@ class ContactCard extends StatelessWidget {
           padding: const EdgeInsets.all(ScreenValues.paddingLarge),
           child: Row(
             children: [
-              Hero(
-                tag: HeroCode.userImage.toString(),
-                child: UserImageWidget(
-                  userImageAddress: imageURL,
-                  size: ScreenValues.iconLarge,
-                ),
-              ),
+              userImage(),
               const SizedBox(width: ScreenValues.paddingNormal),
               Text(
-                ((title?.isNotEmpty == true) ? title :  backupTitle) ?? "",
-                style: Theme.of(context).textTheme.bodyText1,
+                ((title?.isNotEmpty == true) ? title : backupTitle) ?? "",
+                style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],
           ),

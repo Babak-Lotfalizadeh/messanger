@@ -30,6 +30,7 @@ class UsersPage extends StatelessWidget {
                   imageURL: item.imageURL,
                   title: item.name,
                   backupTitle: item.email,
+                  heroTag: false,
                   onTab: () {
                     NavigationService.push(
                       ContactInformationPage(
