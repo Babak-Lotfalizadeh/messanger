@@ -89,13 +89,13 @@ class ChatsProvider extends ChangeNotifier {
     scrollToEnd();
   }
 
-  Future<void> _markAsReceived(ChatViewModel chatViewModel) async {
-    await FirebaseFireStoreService().updateMessage(
-      model: chatViewModel,
-      received: true,
-      seen: false,
-    );
-  }
+  // Future<void> _markAsReceived(ChatViewModel chatViewModel) async {
+  //   await FirebaseFireStoreService().updateMessage(
+  //     model: chatViewModel,
+  //     received: true,
+  //     seen: false,
+  //   );
+  // }
 
   Future<void> _markAsSeen(ChatViewModel chatViewModel) async {
     await FirebaseFireStoreService().updateMessage(

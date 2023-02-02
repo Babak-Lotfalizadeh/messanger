@@ -44,10 +44,12 @@ class DialogWidget extends StatelessWidget {
                       Expanded(
                         child: Text(
                           title,
-                          style:
-                              Theme.of(context).textTheme.headline5?.copyWith(
-                                    fontWeight: FontWeight.w700,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineMedium
+                              ?.copyWith(
+                                fontWeight: FontWeight.w700,
+                              ),
                         ),
                       ),
                       Visibility(

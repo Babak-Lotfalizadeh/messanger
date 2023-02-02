@@ -51,6 +51,7 @@ class ContactInformationPage extends StatelessWidget {
         return contactViewModel?.imageAddress ?? "";
       }
     }
+
     String name() {
       if (userViewModel != null) {
         return userViewModel?.name ?? "";
@@ -71,7 +72,7 @@ class ContactInformationPage extends StatelessWidget {
               title: Text(
                 name(),
                 maxLines: 1,
-                style: Theme.of(context).textTheme.headline6?.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   shadows: [
                     Shadow(
                       color: Theme.of(context).appBarTheme.backgroundColor ??

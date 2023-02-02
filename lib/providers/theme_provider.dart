@@ -30,6 +30,7 @@ class ThemeProvider extends ChangeNotifier {
 
   get themeData => _lightThemeData.copyWith(
         primaryColor: _primaryColorLight,
+        primaryColorLight: _primaryColorLight.withOpacity(0.3),
         textTheme: _lightThemeData.textTheme.apply(
           bodyColor: _primaryTextColorLight,
           fontFamily: GoogleFonts.aBeeZee().fontFamily,
@@ -42,6 +43,7 @@ class ThemeProvider extends ChangeNotifier {
 
   get darkThemeData => _darkThemeData.copyWith(
         primaryColor: _primaryColorDark,
+        primaryColorLight: _primaryColorDark.withOpacity(0.3),
         textTheme: _darkThemeData.textTheme.apply(
           bodyColor: _primaryTextColorDark,
           fontFamily: GoogleFonts.aBeeZee().fontFamily,

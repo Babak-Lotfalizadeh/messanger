@@ -18,7 +18,7 @@ class BackToLogin extends StatelessWidget {
           children: [
             Text(
               strings?.backToLogin ?? "",
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w900,
                     color: Theme.of(context).primaryColor,
                   ),

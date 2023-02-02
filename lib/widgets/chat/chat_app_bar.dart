@@ -36,7 +36,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
             const SizedBox(width: kToolbarHeight * 0.2),
             Text(
               contactViewModel?.title ?? "",
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyMedium,
             )
           ],
         ),

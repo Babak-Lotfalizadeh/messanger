@@ -24,7 +24,7 @@ class TextButtonWidget extends StatelessWidget {
             ),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.bodyText1?.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontWeight: FontWeight.w600,
                 color: Theme.of(context).primaryColor,
               ),

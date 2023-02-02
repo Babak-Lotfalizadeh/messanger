@@ -48,7 +48,7 @@ class _TeddyHeaderWidgetState extends State<TeddyHeaderWidget>
           child: AutoSizeText(
             widget.title,
             maxLines: 1,
-            style: Theme.of(context).textTheme.headline1?.copyWith(
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontFamily: ScreenValues.fontFamilyRighteous,
                   color: Colors.black45,
                   fontWeight: FontWeight.bold,

@@ -7,6 +7,7 @@ class ScreenValues {
   static const double iconNormal = 24;
   static const double iconLarge = 48;
   static const double paddingNormal = 8;
+  static const double paddingXNormal = 12;
   static const double paddingSmall = paddingNormal * 0.5;
   static const double paddingLarge = paddingNormal * 2;
   static const double paddingXLarge = paddingNormal * 3;
@@ -18,6 +19,8 @@ class ScreenValues {
   static const double normalImageSize = 200;
   static const double loginHeaderHeight = 80;
   static const double receiveIndicatorSize = 20;
+  static const double navItemHeight = 58;
+  static const double navItemRadius = 100;
   static const Duration fastAnimation = Duration(milliseconds: 300);
   static const Duration normalAnimation = Duration(seconds: 1);
   static const Color teddyBackground = Color(0xffD6E2EA);

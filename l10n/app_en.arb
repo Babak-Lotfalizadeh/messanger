@@ -49,5 +49,6 @@
   "contacts": "Contacts",
   "chats": "Chats",
   "signOut": "Sign out",
-  "newMessage": "New message"
+  "newMessage": "New message",
+  "home": "Home"
 }

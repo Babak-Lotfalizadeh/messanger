@@ -9,7 +9,7 @@ class ChatViewModel {
   final String message, receiver, chatId;
   final String? id, sender, dateTime;
   final bool send, received, seen;
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   bool sendByMe;
 
   ChatViewModel({

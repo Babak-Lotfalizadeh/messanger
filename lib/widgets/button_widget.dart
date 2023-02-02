@@ -38,7 +38,7 @@ class _ButtonWidgetState extends State<ButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    var textTheme = Theme.of(context).textTheme.bodyText1?.copyWith(
+    var textTheme = Theme.of(context).textTheme.bodyMedium?.copyWith(
           color: Theme.of(context).cardColor,
         );
     Widget child() {

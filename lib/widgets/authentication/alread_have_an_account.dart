@@ -21,7 +21,7 @@ class AlreadyHaveAnAccount extends StatelessWidget {
             ),
             Text(
               strings?.login ?? "",
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w900,
                     color: Theme.of(context).primaryColor,
                   ),

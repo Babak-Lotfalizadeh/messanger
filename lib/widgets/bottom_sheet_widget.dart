@@ -54,7 +54,7 @@ class BottomSheetWidget extends StatelessWidget {
               ),
               child: Text(
                 title,
-                style: Theme.of(context).textTheme.headline5?.copyWith(
+                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                       fontWeight: FontWeight.w700,
                     ),
               ),
