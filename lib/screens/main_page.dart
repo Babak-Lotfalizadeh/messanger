@@ -45,7 +45,7 @@ class MainPage extends StatelessWidget {
           drawer: const HomeDrawer(),
           body: AnimatedSwitcher(
             duration: const Duration(milliseconds: 200),
-            transitionBuilder: (Widget achild, Animation<double> animation) {
+            transitionBuilder: (Widget child, Animation<double> animation) {
               return SlideTransition(
                 position: Tween(
                   begin: const Offset(1.0, 0.0),
