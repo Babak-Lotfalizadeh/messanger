@@ -4,8 +4,6 @@ import 'package:messenger/providers/contacts_provider.dart';
 import 'package:messenger/providers/drawer_provider.dart';
 import 'package:messenger/screens/home_screen.dart';
 import 'package:messenger/screens/setting_screen.dart';
-import 'package:messenger/screens/users_page.dart';
-import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/utilities/imports.dart';
 import 'package:messenger/widgets/app_bar_widget.dart';
 import 'package:messenger/widgets/home/drawer_widget.dart';
@@ -55,10 +53,6 @@ class MainPage extends StatelessWidget {
               );
             },
             child: body(drawerProvider),
-          ),
-          floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.message_outlined),
-            onPressed: () => NavigationService.push(const UsersPage()),
           ),
         ),
       ),

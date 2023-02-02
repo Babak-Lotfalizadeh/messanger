@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/providers/contacts_provider.dart';
 import 'package:messenger/screens/chat_page.dart';
+import 'package:messenger/screens/users_page.dart';
 import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/widgets/contact_card.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).scaffoldBackgroundColor,
-      child: Consumer<ContactsProvider>(
+    return Scaffold(
+      body: Consumer<ContactsProvider>(
         builder: (context, contactsProvider, child) => ListView.separated(
           padding: const EdgeInsets.all(ScreenValues.paddingNormal),
           itemBuilder: (context, index) {
@@ -33,6 +33,10 @@ class HomeScreen extends StatelessWidget {
           ),
           itemCount: contactsProvider.contacts.length,
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.message_outlined),
+        onPressed: () => NavigationService.push(const UsersPage()),
       ),
     );
   }
