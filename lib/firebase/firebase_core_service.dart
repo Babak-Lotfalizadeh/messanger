@@ -38,5 +38,5 @@ class FirebaseCoreService {
 
   static _initFunctions() => FirebaseFunctionService().init();
 
-  static void _initMessaging() => FirebaseMessagingService.init();
+  static _initMessaging() => FirebaseMessagingService.init();
 }

@@ -6,6 +6,7 @@ import 'package:messenger/view_model/chat_view_model.dart';
 import 'package:messenger/view_model/contact_view_model.dart';
 
 class ChatsProvider extends ChangeNotifier {
+  bool _mounted = false;
   ContactViewModel? _contactViewModel;
 
   List<ChatViewModel> get chats => _chats;
@@ -16,6 +17,7 @@ class ChatsProvider extends ChangeNotifier {
   var focusNode = FocusNode();
 
   void init(ContactViewModel? contactViewModel) {
+    _mounted = true;
     _contactViewModel = contactViewModel;
     scrollController.addListener(_scrollControllerListener);
     getChats();
@@ -27,6 +29,7 @@ class ChatsProvider extends ChangeNotifier {
 
   @override
   void dispose() {
+    _mounted = false;
     scrollController.removeListener(_scrollControllerListener);
 
     super.dispose();
@@ -36,6 +39,9 @@ class ChatsProvider extends ChangeNotifier {
     FirebaseFireStoreService()
         .getChats(_contactViewModel?.chatId)
         ?.listen((newValue) {
+      if (!_mounted) {
+        return;
+      }
       _chats = newValue ?? [];
       _markChatsAsSeen(newValue ?? []);
       notifyListeners();
@@ -89,17 +95,9 @@ class ChatsProvider extends ChangeNotifier {
     scrollToEnd();
   }
 
-  // Future<void> _markAsReceived(ChatViewModel chatViewModel) async {
-  //   await FirebaseFireStoreService().updateMessage(
-  //     model: chatViewModel,
-  //     received: true,
-  //     seen: false,
-  //   );
-  // }
-
   Future<void> _markAsSeen(ChatViewModel chatViewModel) async {
     await FirebaseFireStoreService().updateMessage(
-      model: chatViewModel,
+      id: chatViewModel.id ?? "",
       received: true,
       seen: true,
     );

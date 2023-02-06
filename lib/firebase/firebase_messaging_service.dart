@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:messenger/firebase/firebase_fire_store_service.dart';
 
 class FirebaseMessagingService {
   static FirebaseMessaging? _messaging;
@@ -19,9 +20,16 @@ class FirebaseMessagingService {
   }
 
   static Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
+    RemoteMessage message,
+  ) async {
     await Firebase.initializeApp();
-    log("Handling a background message: ${message.messageId}");
+    var firebaseFireStoreService = FirebaseFireStoreService();
+    await firebaseFireStoreService.init();
+    firebaseFireStoreService.updateMessage(
+      id: message.data["body"],
+      received: true,
+      seen: false,
+    );
   }
 
   Future<void> setup(Function(String? token) onUpdate) async {
@@ -38,9 +46,11 @@ class FirebaseMessagingService {
     log('User granted permission: ${settings?.authorizationStatus}');
 
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      log('Got a message whilst in the foreground!');
-      log('Message data: ${message.data}');
-      log('Message also contained a notification: ${message.notification}');
+      FirebaseFireStoreService().updateMessage(
+        id: message.data["body"],
+        received: true,
+        seen: false,
+      );
     });
     _messaging?.onTokenRefresh.listen((fcmToken) {
       onUpdate(fcmToken);
