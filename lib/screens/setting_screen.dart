@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/firebase/firebase_authentication_service.dart';
 import 'package:messenger/providers/theme_provider.dart';
+import 'package:messenger/screens/my_profile_page.dart';
 import 'package:messenger/screens/splash_page.dart';
 import 'package:messenger/services/bottom_sheet_service.dart';
 import 'package:messenger/services/dialog_service.dart';
@@ -84,6 +85,10 @@ class SettingScreen extends StatelessWidget {
     );
   }
 
+  void _showUserInformation(BuildContext context) {
+    NavigationService.push(const MyProfilePage(comeFromSetting: true));
+  }
+
   @override
   Widget build(BuildContext context) {
     var strings = AppLocalizations.of(context);
@@ -110,6 +115,11 @@ class SettingScreen extends StatelessWidget {
                     iconData: Icons.language_outlined,
                     value: strings?.currentLanguage,
                     onClick: () => _showChangeLanguage(context),
+                  ),
+                  SettingItemCard(
+                    title: strings?.editUserInformation ?? "",
+                    iconData: Icons.account_circle,
+                    onClick: () => _showUserInformation(context),
                   ),
                   SettingItemCard(
                     title: strings?.logOut ?? "",

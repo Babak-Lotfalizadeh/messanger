@@ -11,6 +11,8 @@ class UserInformationProvider extends ChangeNotifier {
   String? get photoUrl => _photoUrl;
   String? _photoUrl;
 
+  bool _mounted = true;
+
   User? get user => _user;
   User? _user;
 
@@ -20,11 +22,19 @@ class UserInformationProvider extends ChangeNotifier {
   final TextEditingController displayNameController = TextEditingController();
 
   void init() {
+    _mounted = true;
     getUsers();
+  }
+
+  @override
+  void dispose() {
+    _mounted = false;
+    super.dispose();
   }
 
   void getUsers() {
     FirebaseAuthenticationService().auth?.userChanges().listen((event) {
+      if (!_mounted) return;
       _user = event;
       displayNameController.text = _user?.displayName ?? "";
       notifyListeners();

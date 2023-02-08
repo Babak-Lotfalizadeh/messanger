@@ -56,5 +56,7 @@
   "camera": "Camera",
   "storage": "Storage",
   "cropper": "Cropper",
-  "displayNameIsAMust": "You need to fill Display name field."
+  "displayNameIsAMust": "You need to fill Display name field.",
+  "editUserInformation": "My information"
+
 }
