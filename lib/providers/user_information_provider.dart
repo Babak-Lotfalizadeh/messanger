@@ -41,6 +41,8 @@ class UserInformationProvider extends ChangeNotifier {
 
   Future<void> save() async {
     if (_loading != null) return;
+    _loading = LoadingUpdateUserEnum.save;
+    notifyListeners();
     if (displayNameController.text.isEmpty) {
       throw Exception(UpdateUserEnum.displayName);
     }
@@ -49,6 +51,8 @@ class UserInformationProvider extends ChangeNotifier {
     await FirebaseAuthenticationService().updateUserDisplayName(
       displayNameController.text,
     );
+    _loading = null;
+    notifyListeners();
   }
 
   Future<void> _upload(File? file) async {
