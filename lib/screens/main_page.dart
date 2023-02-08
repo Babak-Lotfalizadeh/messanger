@@ -1,6 +1,6 @@
+import 'package:double_back_to_close_app/double_back_to_close_app.dart';
 import 'package:flutter/material.dart';
 import 'package:messenger/enums/drawer_enum.dart';
-import 'package:messenger/providers/contacts_provider.dart';
 import 'package:messenger/providers/drawer_provider.dart';
 import 'package:messenger/screens/home_screen.dart';
 import 'package:messenger/screens/setting_screen.dart';
@@ -33,26 +33,32 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var strings = AppLocalizations.of(context);
     return ChangeNotifierProvider(
       create: (context) => DrawerProvider(),
-      child: Consumer2<ContactsProvider, DrawerProvider>(
-        builder: (context, contactsProvider, drawerProvider, child) => Scaffold(
+      child: Consumer<DrawerProvider>(
+        builder: (context, drawerProvider, child) => Scaffold(
           appBar: AppBarWidget(
             title: title(drawerProvider, context),
           ),
           drawer: const HomeDrawer(),
-          body: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 200),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return SlideTransition(
-                position: Tween(
-                  begin: const Offset(1.0, 0.0),
-                  end: const Offset(0.0, 0.0),
-                ).animate(animation),
-                child: child,
-              );
-            },
-            child: body(drawerProvider),
+          body: DoubleBackToCloseApp(
+            snackBar: SnackBar(
+              content: Text(strings?.tapBackAgainToLeave ?? ""),
+            ),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return SlideTransition(
+                  position: Tween(
+                    begin: const Offset(1.0, 0.0),
+                    end: const Offset(0.0, 0.0),
+                  ).animate(animation),
+                  child: child,
+                );
+              },
+              child: body(drawerProvider),
+            ),
           ),
         ),
       ),

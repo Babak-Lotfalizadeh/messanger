@@ -55,7 +55,8 @@
   "storage": "حافظه",
   "cropper": "کراپر",
   "displayNameIsAMust": "کامل کردن فیلد نام نمایشی اجباری می باشد.",
-  "editUserInformation": "مشخصات کاربری"
+  "editUserInformation": "مشخصات کاربری",
+  "tapBackAgainToLeave":"برای خروج دوباره دکمه را بفشارید"
 
 
 }

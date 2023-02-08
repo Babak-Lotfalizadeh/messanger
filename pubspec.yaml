@@ -33,8 +33,10 @@ dependencies:
   firebase_analytics: ^10.0.7
   shared_preferences: ^2.0.15
   flutter_colorpicker: ^1.0.3
+  cached_network_image: ^3.2.3
   flutter_svg_provider: ^1.0.3
   firebase_crashlytics: ^3.0.7
+  double_back_to_close_app: ^2.1.0
   flutter_keyboard_visibility: ^5.4.0
 
 dev_dependencies:

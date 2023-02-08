@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:messenger/constants/screen_values.dart';
@@ -41,7 +42,7 @@ class UserImageWidget extends StatelessWidget {
             height: widgetSize,
             child: CircleAvatar(
               foregroundImage: userImageAddress?.isNotEmpty == true
-                  ? NetworkImage(
+                  ? CachedNetworkImageProvider(
                       userImageAddress ?? "",
                     )
                   : null,
