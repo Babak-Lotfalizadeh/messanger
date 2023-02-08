@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:messenger/enums/routes.dart';
+import 'package:messenger/constants/routes.dart';
 import 'package:messenger/view_model/chat_view_model.dart';
 import 'package:messenger/view_model/contact_view_model.dart';
 import 'package:messenger/view_model/user_view_model.dart';

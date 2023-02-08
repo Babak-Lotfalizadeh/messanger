@@ -23,6 +23,8 @@ class FirebaseAuthenticationService {
 
   User? get currentUser => _auth?.currentUser;
 
+  FirebaseAuth? get auth => _auth;
+
   void _onUserStatusChanged(User? user) {
     log('user = $user');
     if (user == null) {
@@ -80,4 +82,18 @@ class FirebaseAuthenticationService {
   }
 
   Future<void> signOut() => FirebaseAuth.instance.signOut();
+
+  Future<void> updateUserImage(String? uploadUrl) async {
+    if (uploadUrl == null) {
+      return;
+    }
+    await FirebaseAuth.instance.currentUser?.updatePhotoURL(uploadUrl);
+  }
+
+  Future<void> updateUserDisplayName(String text) async {
+    if (text.isEmpty) {
+      return;
+    }
+    await FirebaseAuth.instance.currentUser?.updateDisplayName(text);
+  }
 }

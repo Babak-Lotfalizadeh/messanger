@@ -21,8 +21,9 @@ class IndicatorWidget extends StatelessWidget {
       );
     }
 
-    Widget child = const Padding(
-      padding: EdgeInsets.all(ScreenValues.paddingSmall),
+    Widget child = const SizedBox(
+      height: ScreenValues.receiveIndicatorSize * 0.7,
+      width: ScreenValues.receiveIndicatorSize * 0.7,
       child: CircularProgressIndicator(
         color: Colors.white,
         strokeWidth: 2,
@@ -50,7 +51,7 @@ class IndicatorWidget extends StatelessWidget {
       width: ScreenValues.receiveIndicatorSize * 1.5,
       height: ScreenValues.receiveIndicatorSize,
       padding: const EdgeInsets.only(left: ScreenValues.paddingSmall),
-      child: child,
+      child: Center(child: child),
     );
   }
 }

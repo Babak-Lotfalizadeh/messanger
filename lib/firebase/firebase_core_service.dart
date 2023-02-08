@@ -7,6 +7,7 @@ import 'package:messenger/firebase/firebase_database_service.dart';
 import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/firebase/firebase_function_service.dart';
 import 'package:messenger/firebase/firebase_messaging_service.dart';
+import 'package:messenger/firebase/firebase_storage_service.dart';
 import 'package:messenger/firebase_options.dart';
 
 class FirebaseCoreService {
@@ -24,6 +25,7 @@ class FirebaseCoreService {
     await _initDatabase();
     await _initFirebaseFireStore();
     await _initFunctions();
+    await _initStorage();
   }
 
   static _initAnalytics() => FirebaseAnalyticsService().init();
@@ -37,6 +39,8 @@ class FirebaseCoreService {
   static _initFirebaseFireStore() => FirebaseFireStoreService().init();
 
   static _initFunctions() => FirebaseFunctionService().init();
+
+  static _initStorage() => FirebaseStorageService().init();
 
   static _initMessaging() => FirebaseMessagingService.init();
 }

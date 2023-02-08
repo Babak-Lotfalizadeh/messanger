@@ -48,6 +48,13 @@
   "chats": "گفتگو ها",
   "signOut": "خروج از حساب",
   "newMessage": "پیام جدید",
-  "home": "خانه"
+  "home": "خانه",
+  "email": "ایمیل",
+  "changeImage": "تغییر تصویر",
+  "camera": "دوربین",
+  "storage": "حافظه",
+  "cropper": "کراپر",
+  "displayNameIsAMust": "کامل کردن فیلد نام نمایشی اجباری می باشد."
+
 
 }

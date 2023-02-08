@@ -50,5 +50,11 @@
   "chats": "Chats",
   "signOut": "Sign out",
   "newMessage": "New message",
-  "home": "Home"
+  "home": "Home",
+  "email": "Email",
+  "changeImage": "Change Image",
+  "camera": "Camera",
+  "storage": "Storage",
+  "cropper": "Cropper",
+  "displayNameIsAMust": "You need to fill Display name field."
 }

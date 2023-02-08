@@ -4,6 +4,7 @@ import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/firebase/firebase_messaging_service.dart';
 import 'package:messenger/screens/authentication_page.dart';
 import 'package:messenger/screens/main_page.dart';
+import 'package:messenger/screens/my_profile_page.dart';
 
 class SplashProvider extends ChangeNotifier {
   var currentUser = FirebaseAuthenticationService().currentUser;
@@ -24,7 +25,12 @@ class SplashProvider extends ChangeNotifier {
   void init(Function(Widget nextPage) onFinishLoading) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
       if (_weHaveUser()) {
-        await _handleUserToken();
+        await Future.wait([_handleUserToken()]);
+        var displayName = currentUser?.displayName;
+        if (displayName?.isEmpty == true) {
+          onFinishLoading(const MyProfilePage());
+          return;
+        }
         onFinishLoading(const MainPage());
       } else {
         onFinishLoading(const AuthenticationPage());
