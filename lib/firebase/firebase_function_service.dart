@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:messenger/view_model/chat_view_model.dart';
 import 'package:messenger/view_model/contact_view_model.dart';
 import 'package:messenger/view_model/create_contact_view_model.dart';
+import 'package:messenger/view_model/user_view_model.dart';
 
 class FirebaseFunctionService {
   static FirebaseFunctions? _functions;
@@ -62,6 +63,25 @@ class FirebaseFunctionService {
     try {
       var result = await _functions?.httpsCallable('getContacts').call();
       return _convertToListContactViewModel(result);
+    } on FirebaseFunctionsException catch (error) {
+      debugPrint(error.code);
+      return null;
+    } catch (error) {
+      debugPrint(error.toString());
+      return null;
+    }
+  }
+
+  Future<List<UserViewModel>?> getUsers() async {
+    try {
+      var result = await _functions?.httpsCallable('getUsers').call();
+      return List.generate(
+        (result?.data as List).length,
+        (index) => UserViewModel.fromJson(
+          Map<String, dynamic>.from(
+              result?.data[index] as Map<Object?, Object?>),
+        ),
+      );
     } on FirebaseFunctionsException catch (error) {
       debugPrint(error.code);
       return null;

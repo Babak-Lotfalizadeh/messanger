@@ -22,30 +22,32 @@ class UsersPage extends StatelessWidget {
             title: strings?.newMessage,
           ),
           body: SafeArea(
-            child: ListView.separated(
-              padding: const EdgeInsets.all(ScreenValues.paddingNormal),
-              itemBuilder: (context, index) {
-                var item = usersProvider.users[index];
-                return ContactCard(
-                  imageURL: item.imageURL,
-                  title: item.name,
-                  backupTitle: item.email,
-                  heroTag: false,
-                  onTab: () {
-                    NavigationService.push(
-                      ContactInformationPage(
-                        userViewModel: item,
-                        comeFromChat: false,
-                      ),
-                    );
-                  },
-                );
-              },
-              separatorBuilder: (context, index) => const SizedBox(
-                height: ScreenValues.paddingNormal,
-              ),
-              itemCount: usersProvider.users.length,
-            ),
+            child: usersProvider.loading
+                ? const Center(child: CircularProgressIndicator())
+                : ListView.separated(
+                    padding: const EdgeInsets.all(ScreenValues.paddingNormal),
+                    itemBuilder: (context, index) {
+                      var item = usersProvider.users[index];
+                      return ContactCard(
+                        imageURL: item.imageURL,
+                        title: item.name,
+                        backupTitle: item.email,
+                        heroTag: false,
+                        onTab: () {
+                          NavigationService.push(
+                            ContactInformationPage(
+                              userViewModel: item,
+                              comeFromChat: false,
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: ScreenValues.paddingNormal,
+                    ),
+                    itemCount: usersProvider.users.length,
+                  ),
           ),
         ),
       ),

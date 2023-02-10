@@ -19,16 +19,6 @@ class FirebaseFireStoreService {
     _database = FirebaseFirestore.instance;
   }
 
-  Stream<List<UserViewModel>?>? getUsers() {
-    var ref = _database?.collection(Routes.users);
-
-    return ref?.snapshots().map((event) {
-      return event.docs
-          .map((element) => UserViewModel.fromJson(element.data()))
-          .toList();
-    });
-  }
-
   Stream<List<ChatViewModel>?>? getChats(String? chatId) {
     var ref = _database
         ?.collection(Routes.chats)
