@@ -29,13 +29,13 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
             Hero(
               tag: HeroCode.userImage.toString(),
               child: UserImageWidget(
-                userImageAddress: contactViewModel?.imageAddress ?? "",
+                userImageAddress: contactViewModel?.getImage() ?? "",
                 size: kToolbarHeight * 0.7,
               ),
             ),
             const SizedBox(width: kToolbarHeight * 0.2),
             Text(
-              contactViewModel?.title ?? "",
+              contactViewModel?.getTitle() ?? "",
               style: Theme.of(context).textTheme.bodyMedium,
             )
           ],

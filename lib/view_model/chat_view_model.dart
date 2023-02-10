@@ -6,7 +6,7 @@ part 'chat_view_model.g.dart';
 
 @JsonSerializable()
 class ChatViewModel {
-  final String message, receiver, chatId;
+  final String message, chatId;
   final String? id, sender, dateTime;
   final bool send, received, seen;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -15,7 +15,6 @@ class ChatViewModel {
   ChatViewModel({
     required this.message,
     required this.chatId,
-    required this.receiver,
     this.id,
     this.sender,
     this.send = false,

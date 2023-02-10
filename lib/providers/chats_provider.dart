@@ -82,7 +82,6 @@ class ChatsProvider extends ChangeNotifier {
     _chats.add(ChatViewModel(
       message: model.message,
       chatId: model.chatId,
-      receiver: model.receiver,
       id: model.id,
       sender: FirebaseAuthenticationService().currentUser?.uid,
       received: false,
@@ -110,10 +109,10 @@ class ChatsProvider extends ChangeNotifier {
     if (controller.text.isEmpty) {
       return;
     }
+    var myId = contactViewModel?.chatId ?? "";
     var model = ChatViewModel(
       message: controller.text,
-      chatId: contactViewModel?.chatId ?? "",
-      receiver: contactViewModel?.contactId ?? "",
+      chatId: myId,
     );
 
     _createMessageTemplate(model);

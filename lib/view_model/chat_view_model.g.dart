@@ -10,7 +10,6 @@ ChatViewModel _$ChatViewModelFromJson(Map<String, dynamic> json) =>
     ChatViewModel(
       message: json['message'] as String,
       chatId: json['chatId'] as String,
-      receiver: json['receiver'] as String,
       id: json['id'] as String?,
       sender: json['sender'] as String?,
       send: json['send'] as bool? ?? false,
@@ -22,7 +21,6 @@ ChatViewModel _$ChatViewModelFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$ChatViewModelToJson(ChatViewModel instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'receiver': instance.receiver,
       'chatId': instance.chatId,
       'id': instance.id,
       'sender': instance.sender,

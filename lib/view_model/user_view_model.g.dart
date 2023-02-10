@@ -12,7 +12,7 @@ UserViewModel _$UserViewModelFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       imageURL: json['imageURL'] as String,
       name: json['name'] as String,
-      fcmToken: json['fcmToken'] as String,
+      fcmToken: json['fcmToken'] as String?,
     );
 
 Map<String, dynamic> _$UserViewModelToJson(UserViewModel instance) =>

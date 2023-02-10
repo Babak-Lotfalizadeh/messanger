@@ -120,6 +120,9 @@ class ContactInformationPage extends StatelessWidget {
                 contact = contactViewModel;
               }
 
+              if (contact == null) {
+                return;
+              }
               NavigationService.push(ChatPage(contactViewModel: contact));
             }
           },

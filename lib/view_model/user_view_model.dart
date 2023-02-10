@@ -5,14 +5,15 @@ part 'user_view_model.g.dart';
 
 @JsonSerializable()
 class UserViewModel {
-  final String userId, email, imageURL, name, fcmToken;
+  final String userId, email, imageURL, name;
+  final String? fcmToken;
 
   UserViewModel({
     required this.userId,
     required this.email,
     required this.imageURL,
     required this.name,
-    required this.fcmToken,
+    this.fcmToken,
   });
 
   factory UserViewModel.fromJson(Map<String, dynamic> json) =>

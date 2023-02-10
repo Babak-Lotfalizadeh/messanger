@@ -20,8 +20,8 @@ class HomeScreen extends StatelessWidget {
             var item = contactsProvider.contacts[index];
 
             return ContactCard(
-              imageURL: item.imageAddress,
-              title: item.title,
+              imageURL: item.getImage(),
+              title: item.getTitle(),
               backupTitle: item.chatId,
               onTab: () {
                 NavigationService.push(ChatPage(contactViewModel: item));

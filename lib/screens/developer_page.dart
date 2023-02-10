@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:messenger/firebase/firebase_authentication_service.dart';
-import 'package:messenger/firebase/firebase_fire_store_service.dart';
 import 'package:messenger/widgets/button_widget.dart';
 
 class DeveloperPage extends StatelessWidget {
@@ -9,16 +7,28 @@ class DeveloperPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          ButtonWidget(
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ButtonWidget(
               onPressed: () async {
-                final String? userId =
-                    FirebaseAuthenticationService().currentUser?.uid;
-                FirebaseFireStoreService().getContacts(userId);
+                // var result = await FirebaseFunctionService().getContacts();
               },
-              title: "get"),
-        ],
+              title: "get",
+            ),
+            ButtonWidget(
+              onPressed: () async {
+                // var result = await FirebaseFunctionService().createContact(
+                //   model: const CreateContactViewModel(
+                //     user: "dH4HsdlqwfRSnHpOaVWhSxU8owy1",
+                //   ),
+                // );
+              },
+              title: "create",
+            ),
+          ],
+        ),
       ),
     );
   }
