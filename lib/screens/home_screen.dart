@@ -5,6 +5,7 @@ import 'package:messenger/screens/chat_page.dart';
 import 'package:messenger/screens/users_page.dart';
 import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/widgets/contact_card.dart';
+import 'package:messenger/widgets/list_view_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,8 +15,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer<ContactsProvider>(
-        builder: (context, contactsProvider, child) => ListView.separated(
-          padding: const EdgeInsets.all(ScreenValues.paddingNormal),
+        builder: (context, contactsProvider, child) => ListViewWidget(
+          loading: contactsProvider.loading,
           itemBuilder: (context, index) {
             var item = contactsProvider.contacts[index];
 

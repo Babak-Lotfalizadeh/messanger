@@ -6,6 +6,7 @@ import 'package:messenger/services/navigation_service.dart';
 import 'package:messenger/utilities/imports.dart';
 import 'package:messenger/widgets/app_bar_widget.dart';
 import 'package:messenger/widgets/contact_card.dart';
+import 'package:messenger/widgets/list_view_widget.dart';
 import 'package:provider/provider.dart';
 
 class UsersPage extends StatelessWidget {
@@ -21,33 +22,29 @@ class UsersPage extends StatelessWidget {
           appBar: AppBarWidget(
             title: strings?.newMessage,
           ),
-          body: SafeArea(
-            child: usersProvider.loading
-                ? const Center(child: CircularProgressIndicator())
-                : ListView.separated(
-                    padding: const EdgeInsets.all(ScreenValues.paddingNormal),
-                    itemBuilder: (context, index) {
-                      var item = usersProvider.users[index];
-                      return ContactCard(
-                        imageURL: item.imageURL,
-                        title: item.name,
-                        backupTitle: item.email,
-                        heroTag: false,
-                        onTab: () {
-                          NavigationService.push(
-                            ContactInformationPage(
-                              userViewModel: item,
-                              comeFromChat: false,
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    separatorBuilder: (context, index) => const SizedBox(
-                      height: ScreenValues.paddingNormal,
+          body: ListViewWidget(
+            loading: usersProvider.loading,
+            itemBuilder: (context, index) {
+              var item = usersProvider.users[index];
+              return ContactCard(
+                imageURL: item.imageURL,
+                title: item.name,
+                backupTitle: item.email,
+                heroTag: false,
+                onTab: () {
+                  NavigationService.push(
+                    ContactInformationPage(
+                      userViewModel: item,
+                      comeFromChat: false,
                     ),
-                    itemCount: usersProvider.users.length,
-                  ),
+                  );
+                },
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(
+              height: ScreenValues.paddingNormal,
+            ),
+            itemCount: usersProvider.users.length,
           ),
         ),
       ),

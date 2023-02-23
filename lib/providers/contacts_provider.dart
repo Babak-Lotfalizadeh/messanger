@@ -16,11 +16,12 @@ class ContactsProvider extends ChangeNotifier {
     getContacts();
   }
 
-  void getContacts() {
-    FirebaseFunctionService().getContacts().then((newValue) {
-      _contacts = newValue ?? [];
-      notifyListeners();
-    });
+  void getContacts() async {
+    _loading = true;
+    notifyListeners();
+    _contacts = await FirebaseFunctionService().getContacts() ?? [];
+    _loading = false;
+    notifyListeners();
   }
 
   ContactViewModel? getContactThatHaveThisUsers(String? user1, String? user2) {

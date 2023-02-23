@@ -3,6 +3,7 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:messenger/constants/screen_values.dart';
 import 'package:messenger/providers/chats_provider.dart';
 import 'package:messenger/widgets/chat/chat_card.dart';
+import 'package:messenger/widgets/list_view_widget.dart';
 import 'package:provider/provider.dart';
 
 class ChatContent extends StatelessWidget {
@@ -17,10 +18,9 @@ class ChatContent extends StatelessWidget {
             chatsProvider.scrollToEnd();
           }
 
-          return ListView.separated(
+          return ListViewWidget(
             controller: chatsProvider.scrollController,
             itemCount: chatsProvider.chats.length,
-            padding: const EdgeInsets.all(ScreenValues.paddingNormal),
             itemBuilder: (context, index) => ChatCard(
               senderOfNextIsTheSame: chatsProvider.senderOfNextIsTheSame(index),
               chatViewModel: chatsProvider.chats[index],

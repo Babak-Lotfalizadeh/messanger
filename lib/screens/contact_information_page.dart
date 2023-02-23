@@ -104,7 +104,9 @@ class ContactInformationPage extends StatelessWidget {
       floatingActionButton: Consumer<ContactsProvider>(
         builder: (context, contactsProvider, child) => FloatingActionButton(
           child: contactsProvider.loading
-              ? const CircularProgressIndicator()
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                )
               : const Icon(Icons.message),
           onPressed: () async {
             if (contactsProvider.loading) {
